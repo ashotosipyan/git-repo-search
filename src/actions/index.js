@@ -14,6 +14,24 @@ export let endForkSearch = forksArray => {
 	};
 };
 
+export let successfullSubmit = () => {
+	return {
+		type: actionTypes.SUCCESSFUL_FORM_SUBMIT
+	};
+};
+
+export let lastItem = () => {
+	return {
+		type: actionTypes.LIST_LAST_ITEM
+	};
+};
+
+export let submitForm = () => {
+	return dispatch => {
+		dispatch(successfullSubmit());
+	};
+};
+
 export let fetchForks = (inputResult, page) => {
 	let url = `https://api.github.com/repos/${inputResult}/forks?page=${page}&per_page=10`;
 	return dispatch => {
@@ -21,7 +39,11 @@ export let fetchForks = (inputResult, page) => {
 		return axios.get(url).then(
 			response => {
 				let forksArr = response.data;
-				dispatch(endForkSearch(forksArr));
+				if (forksArr.length === 0) {
+					dispatch(lastItem());
+				} else {
+					dispatch(endForkSearch(forksArr));
+				}
 			},
 			err => {
 				console.log(err);

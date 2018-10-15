@@ -1,8 +1,9 @@
 import { combineReducers } from "redux";
-import { forksReducer } from "./reducer";
+import { forksReducer, submitForm } from "./reducer";
 
 const rootReducer = combineReducers({
-	forks: forksReducer
+	forks: forksReducer,
+	isSubmitted: submitForm
 });
 
 export default rootReducer;

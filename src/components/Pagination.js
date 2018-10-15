@@ -5,10 +5,24 @@ const Pagination = props => {
 		<nav aria-label="Page navigation example">
 			<ul className="pagination">
 				<li className="page-item">
-					<a className="page-link">Previous</a>
+					<button
+						disabled={
+							parseInt(props.currentPage) === 1 ? true : false
+						}
+						className="page-link"
+						onClick={props.prevPage}
+					>
+						Previous
+					</button>
 				</li>
 				<li className="page-item">
-					<a className="page-link">Next</a>
+					<button
+						disabled={props.lastPage ? true : false}
+						className="page-link"
+						onClick={props.nextPage}
+					>
+						Next
+					</button>
 				</li>
 			</ul>
 		</nav>

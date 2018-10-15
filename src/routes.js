@@ -5,8 +5,8 @@ import Search from "./components/Search";
 
 const Routes = () => (
 	<Switch>
-		<Route path="/" component={Landing} />
-		<Route path="/search" component={Search} />
+		<Route exact path="/" component={Landing} />
+		<Route path="/search/" component={Search} />
 	</Switch>
 );
 
